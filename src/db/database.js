@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 // static database URL
-const url = "mongodb://localhost:27017/TNPW2-Projekt-Souteze";
+const url = "mongodb://localhost:27017/TNPW2-Projekt";
 
 exports.connect = () => {
     // Connecting to the database
