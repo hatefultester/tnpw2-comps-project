@@ -5,13 +5,15 @@ require("./db/database").connect();
 const handlebars = require("express-handlebars");
 const compRoutes = require("./routes/compRoutes");
 const userRoutes = require("./routes/userRoutes");
+const webRoutes = require("./routes/webRoutes");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 
-
 app.use(express.json());
-app.set('view engine', 'hbs');
+app.use(cookieParser());
 
+app.set('view engine', 'hbs');
 app.engine('hbs', handlebars.engine({
     layoutsDir: `${__dirname}/../views/layouts`,
     extname: 'hbs',
@@ -20,25 +22,11 @@ app.engine('hbs', handlebars.engine({
 }));
 
 app.use(express.static('public'));
+app.use('/', webRoutes);
 
 app.use('/api/comp/', compRoutes);
 app.use('/api/user/', userRoutes);
 
-app.get('/', (req, res) => {
-    res.render('main');
-});
-
-app.get('/login', (req, res) => {
-    res.render('login');
-});
-
-app.get('/registration', (req, res) => {
-    res.render('registration');
-});
-
-app.get('*', (req, res) => {
-    res.render('page_not_found');
-});
 
 
 const port = 5000;

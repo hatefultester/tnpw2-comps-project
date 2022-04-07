@@ -41,7 +41,7 @@ router.post('/create', async(req, res) => {
     res.status(201).json(user);
 });
 
-router.get('/login', async(req, res) => {
+router.post('/login', async(req, res) => {
     try {
         const { username, password } = req.body;
 
@@ -79,7 +79,6 @@ router.get('/logout', async(req, res) => {
 });
 
 function createAccessToken(user) {
-    console.log(ACCESS_TOKEN_KEY);
     return jwt.sign({ user },
         ACCESS_TOKEN_KEY, { expiresIn: "1h" }
     );

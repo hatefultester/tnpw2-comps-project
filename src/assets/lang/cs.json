@@ -1,0 +1,14 @@
+{
+    "form_username": "Uživatelské jméno : ",
+    "form_password": "Heslo : ",
+    "form_repeat_password": "Heslo znovu : ",
+    "form_login_button": "Přihlásit se",
+    "form_registration_button": "Zaregistrovat se",
+    "form_registration_info_text": "Nebo se můžeš zaregistrovat",
+    "form_registration_requirements_text": "Heslo musí mít alespoň 8 znaků",
+    "page_title": "TNPW2 Studentský projekt - Sledování soutěží",
+    "main_info_text": "Přejít na přihlašovací obrazovku",
+    "footer_info_text": "Studentský projekt TNPW2 - Vytvořil Matěj Grohmann",
+    "page_not_found_text": "Je mi líto, ale tato stránka neexistuje",
+    "page_not_found_link": "Klikni zde a přejdi na hlavní stránku"
+}
