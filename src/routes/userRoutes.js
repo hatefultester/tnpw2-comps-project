@@ -73,9 +73,8 @@ router.post('/login', async(req, res) => {
 });
 
 router.get('/logout', async(req, res) => {
-
-    // clear cookies
-    res.clearCookie("token");
+    res.cookie('token').clearCookie;
+    res.status(200).send("OK");
 });
 
 function createAccessToken(user) {

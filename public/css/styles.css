@@ -8,3 +8,33 @@
     text-align: center;
     padding: 10px;
 }
+
+.footer ul {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.footer li {
+    float: right;
+    padding: 5px;
+    margin-right: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+    .footer {
+        background-color: transparent;
+    }
+    .footer ul {
+        padding: 5px;
+        background-color: lightblue;
+    }
+    .footer li {
+        align-content: center;
+    }
+}

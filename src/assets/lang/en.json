@@ -10,5 +10,6 @@
     "main_info_text": "Direct yourself to login page",
     "footer_info_text": "Student project TNPW2 - Created by Matěj Grohmann",
     "page_not_found_text": "I am sorry, but this page was not found",
-    "page_not_found_link": "Click here to go to the main page"
+    "page_not_found_link": "Click here to go to the main page",
+    "switch_lang_img": "cz"
 }

@@ -6,6 +6,7 @@ const handlebars = require("express-handlebars");
 const compRoutes = require("./routes/compRoutes");
 const userRoutes = require("./routes/userRoutes");
 const webRoutes = require("./routes/webRoutes");
+const langRoutes = require("./routes/langRoutes");
 const cookieParser = require("cookie-parser");
 
 const app = express();
@@ -21,11 +22,13 @@ app.engine('hbs', handlebars.engine({
     partialsDir: `${__dirname}/../views/partials`
 }));
 
-app.use(express.static('public'));
-app.use('/', webRoutes);
 
 app.use('/api/comp/', compRoutes);
 app.use('/api/user/', userRoutes);
+app.use('/api/lang/', langRoutes);
+
+app.use(express.static('public'));
+app.use('/', webRoutes);
 
 
 
