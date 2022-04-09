@@ -1,3 +1,4 @@
+/*
 .footer {
     position: fixed;
     left: 0;
@@ -37,4 +38,56 @@
     .footer li {
         align-content: center;
     }
+}
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+.menu {
+    overflow: auto;
+    float: left;
+    width: 20%;
+    text-align: center;
+}
+
+.menu a {
+    background-color: #e5e5e5;
+    padding: 8px;
+    margin-top: 7px;
+    display: block;
+    width: 100%;
+    color: black;
+}
+
+.main {
+    float: left;
+    width: 60%;
+    padding: 0 20px;
+}
+
+.header {
+    background-color: #e5e5e5;
+    padding: 15px;
+    overflow: auto;
+    text-align: center;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #e5e5e5;
+    text-align: center;
+    padding: 10px;
+    margin-top: 7px;
+}
+
+.change-language {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    margin: 10px;
 }

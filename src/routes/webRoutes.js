@@ -25,15 +25,15 @@ router.get('/', (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-    res.render('auth/login', { str: getStrings(req, res) });
+    res.render('layouts/auth/login', { str: getStrings(req, res) });
 });
 
 router.get('/registration', (req, res) => {
-    res.render('auth/registration', { str: getStrings(req, res) });
+    res.render('layouts/auth/registration', { str: getStrings(req, res) });
 });
 
 router.get('*', (req, res) => {
-    res.render('error/page_not_found', { str: getStrings(req, res) });
+    res.render('layouts/error/page_not_found', { str: getStrings(req, res) });
 });
 
 module.exports = router;
