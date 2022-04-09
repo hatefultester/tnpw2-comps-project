@@ -2,7 +2,11 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const router = express.Router();
+const userAgent = require('express-useragent');
 const User = require("../model/userModel");
+
+const auth = require("../middleware/jwtAuth");
+
 const ACCESS_TOKEN_KEY = 'tnpw2projekt';
 
 router.post('/create', async(req, res) => {
@@ -34,7 +38,6 @@ router.post('/create', async(req, res) => {
 
     // create a user token
     const token = createAccessToken(user);
-
     res.cookie("token", token, {
         httpOnly: true,
     });
@@ -63,10 +66,11 @@ router.post('/login', async(req, res) => {
             });
 
             res.status(200).json(user);
+        } else {
+            // return invalid credentials error
+            res.status(400).send("Invalid Credentials");
         }
 
-        // return invalid credentials error
-        res.status(400).send("Invalid Credentials");
     } catch (err) {
         console.log(err);
     }

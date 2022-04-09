@@ -1,17 +1,13 @@
-const loginFormDOM = document.querySelector('.login');
-const usernameInput = document.querySelector('.username-input');
-const passwordInput = document.querySelector('.password-input');
-
+const loginFormDOM = document.querySelector('.create-competition');
+const usernameInput = document.querySelector('.name-input');
+const passwordInput = document.querySelector('.date-input');
+/*
 loginFormDOM.addEventListener('submit', async(e) => {
     e.preventDefault();
     if (!usernameInput.value || !passwordInput.value) return;
     const username = usernameInput.value;
     const password = passwordInput.value;
     const user = { username, password };
-    const url = window.location.href.split("#");
-
-    console.log(url);
-
     try {
         const response = await fetch('/api/user/login', {
             method: 'POST',
@@ -24,9 +20,9 @@ loginFormDOM.addEventListener('submit', async(e) => {
         if (response.status === 200) {
             usernameInput.value = '';
             passwordInput.value = '';
-            if (url[1]) location.replace(url[1]);
         }
     } catch (error) {
         console.log(error);
     }
 });
+*/

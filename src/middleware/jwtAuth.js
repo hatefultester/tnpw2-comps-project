@@ -1,22 +1,40 @@
 const jwt = require("jsonwebtoken");
+const userAgent = require('express-useragent');
+const req = require("express/lib/request");
 const ACCESS_TOKEN_KEY = 'tnpw2projekt';
 
-const verifyToken = (req, res, next) => {
+const auth = (req, res, next) => {
 
-    const token = req.body.token || req.query.token || req.headers["x-access-token"] || req.header('Authorization').replace('Bearer ', '');
+    const { token } = req.cookies;
+    const browser = userAgent.getBrowser(req.headers['user-agent']);
+    const originUrl = req.url;
 
     if (!token) {
-        return res.status(403).send("A token is required for authentication");
+        if (browser.includes("ostman")) {
+            return res.status(403).send("A token is required for authentication");
+        } else return res.redirect(`/login_required#${originUrl}`)
     }
 
     try {
         const decoded = jwt.verify(token, ACCESS_TOKEN_KEY);
         req.user = decoded;
     } catch (err) {
-        return res.status(401).send("Invalid Token");
+        if (browser.includes("ostman")) {
+            return res.status(401).send("Invalid Token, please refresh your token");
+        } else return res.redirect(`/login_expired#${originUrl}`)
     }
 
     return next();
 };
 
-module.exports = verifyToken;
+const validToken = (req) => {
+    const { token } = req.cookies;
+    try {
+        const decoded = jwt.verify(token, ACCESS_TOKEN_KEY);
+        if (!decoded) { return false } else { return true }
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+module.exports = { auth, validToken };
