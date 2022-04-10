@@ -3,7 +3,7 @@ const path = require("path")
 require("./db/database").connect();
 
 const handlebars = require("express-handlebars");
-const compRoutes = require("./routes/compRoutes");
+const compRoutes = require("./routes/comp/competitionRoutes");
 const userRoutes = require("./routes/userRoutes");
 const webRoutes = require("./routes/webRoutes");
 const langRoutes = require("./routes/langRoutes");

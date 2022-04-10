@@ -1,28 +1,35 @@
-const loginFormDOM = document.querySelector('.create-competition');
-const usernameInput = document.querySelector('.name-input');
-const passwordInput = document.querySelector('.date-input');
-/*
-loginFormDOM.addEventListener('submit', async(e) => {
+const createFormDOM = document.querySelector('.create-competition');
+const nameInput = document.querySelector('.name-input');
+const dateInput = document.querySelector('.date-input');
+const shortDescriptionInput = document.querySelector('.short-description-input');
+const descriptionInput = document.querySelector('.description-input');
+
+createFormDOM.addEventListener('submit', async(e) => {
     e.preventDefault();
-    if (!usernameInput.value || !passwordInput.value) return;
-    const username = usernameInput.value;
-    const password = passwordInput.value;
-    const user = { username, password };
+    if (!(nameInput && dateInput && shortDescriptionInput)) return;
+
+    const name = nameInput.value;
+    const date = dateInput.value;
+    const shortDescription = shortDescriptionInput.value;
+    const description = descriptionInput.value;
+    const body = { name, date, shortDescription, description };
+
+
+    console.log(JSON.stringify(body));
+
     try {
-        const response = await fetch('/api/user/login', {
+        const response = await fetch('/api/comp/create', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
             },
-            body: JSON.stringify(user),
+            body: JSON.stringify(body),
         });
 
         if (response.status === 200) {
-            usernameInput.value = '';
-            passwordInput.value = '';
+            location.replace('/register');
         }
     } catch (error) {
         console.log(error);
     }
 });
-*/

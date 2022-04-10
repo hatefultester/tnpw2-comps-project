@@ -48,8 +48,8 @@ router.get('/registration', (req, res) => {
     res.render('layouts/auth/registration', { str: getStrings(req, res) });
 });
 
-router.get('/comps/create', auth, (req, res) => {
-    res.render('layouts/comps/create', { str: getStrings(req, res) });
+router.get('/comp/create', auth, (req, res) => {
+    res.render('layouts/comp/create', { str: getStrings(req, res) });
 });
 
 router.get('*', (req, res) => {
