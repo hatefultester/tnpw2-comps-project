@@ -1,1 +1,12 @@
 <a href="/login">{{str.main_info_text}}</a>
+
+<script src="/js/dashboard.js"></script>
+
+<div class="dashboard">
+    {{#each comp}}
+    {{this.name}} <br />
+    {{this.date}} <br />
+    {{this.shortDescription}} <br />
+    {{this.id}}
+    {{/each}}
+</div>

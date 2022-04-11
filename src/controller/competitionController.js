@@ -1,16 +1,7 @@
-/*
-
-Get All, Create comp, Delete comp, Get detail
-
-*/
-
-const express = require("express");
-const router = express.Router();
-const competition = require("../../model/comp/competitionModel");
-const { auth } = require("../../middleware/jwtAuth");
+const competition = require('./../model/comp/competitionModel');
 
 
-router.post('/create', auth, async(req, res) => {
+const createCompetition = async() => {
     try {
 
         const { name, date, shortDescription, description } = req.body;
@@ -31,7 +22,34 @@ router.post('/create', auth, async(req, res) => {
     } catch (err) {
         console.log(err);
     }
-});
+}
+
+const getListOfCompetitions = async() => {
+    const comps = await competition.find({});
+    const reduced = comps.map(reduceCompInfo);
+    console.log(reduced);
+    return reduced;
+};
+
+const getAllCompetitions = async(req, res) => {
+    try {
+        const comps = await competition.find({});
+        res.status(200).json(comps);
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+function reduceCompInfo(comp) {
+    return {
+        "name": comp.name,
+        "date": comp.date,
+        "shortDescription": comp.shortDescription,
+        "id": comp.id
+    };
+};
+
+// TODO
 
 router.get('/get', async(req, res) => {
     const { id } = req.params.id || req.body;
@@ -51,32 +69,6 @@ router.delete('/delete', async(req, res) => {
     } else res.status(400).send("Not found");
 });
 
-// returns all competition with useful info for dashboard
-router.get('/list', async(req, res) => {
-    const comps = await competition.find({});
-    try {
-        const reduced = comps.map(reduceCompInfo);
-        res.status(200).json(reduced);
-    } catch (err) { console.log(err); }
-
-});
-
-// returns all competitions in json
-router.get('/getAll', async(req, res) => {
-    try {
-        const comps = await competition.find({});
-        res.status(200).json(comps);
-    } catch (err) { console.log(err); }
-});
-
-
-function reduceCompInfo(comp) {
-    return {
-        "name": comp.name,
-        "date": comp.date,
-        "shortDescription": comp.shortDescription
-    };
-}
 
 
 // deletes all competitions in json
@@ -86,4 +78,4 @@ router.delete('/deleteAll', auth, async(req, res) => {
 });
 
 
-module.exports = router;
+module.exports = { getListOfCompetitions };

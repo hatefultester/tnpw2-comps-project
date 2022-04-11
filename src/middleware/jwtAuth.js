@@ -1,16 +1,14 @@
 const jwt = require("jsonwebtoken");
-const userAgent = require('express-useragent');
-const req = require("express/lib/request");
+const { postman } = require("./../utils/helper");
 const ACCESS_TOKEN_KEY = 'tnpw2projekt';
 
 const auth = (req, res, next) => {
 
     const { token } = req.cookies;
-    const browser = userAgent.getBrowser(req.headers['user-agent']);
     const originUrl = req.url;
 
     if (!token) {
-        if (browser.includes("ostman")) {
+        if (postman) {
             return res.status(403).send("A token is required for authentication");
         } else return res.redirect(`/login_required#${originUrl}`)
     }
@@ -19,7 +17,7 @@ const auth = (req, res, next) => {
         const decoded = jwt.verify(token, ACCESS_TOKEN_KEY);
         req.user = decoded;
     } catch (err) {
-        if (browser.includes("ostman")) {
+        if (postman) {
             return res.status(401).send("Invalid Token, please refresh your token");
         } else return res.redirect(`/login_expired#${originUrl}`)
     }
