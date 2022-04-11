@@ -1,6 +1,6 @@
-const helper = require('./../utils/helper');
-const competitionController = require("./../controller/competitionController");
-const { validToken } = require("./../middleware/jwtAuth");
+const helper = require('../../utils/helper');
+const competitionController = require("../comp/competitionController");
+const { validToken } = require("../../middleware/jwtAuth");
 
 const dashboardPage = async(req, res) => {
     const comps = await competitionController.getListOfCompetitions();
@@ -38,4 +38,12 @@ const errorPage = async(req, res) => {
     res.render('layouts/error/page_not_found', { str: helper.getStrings(req, res) });
 }
 
-module.exports = { dashboardPage, loginPage, expiredLoginPage, requiredLoginPage, registrationPage, createCompetitionPage, errorPage };
+module.exports = {
+    dashboardPage,
+    loginPage,
+    expiredLoginPage,
+    requiredLoginPage,
+    registrationPage,
+    createCompetitionPage,
+    errorPage
+};

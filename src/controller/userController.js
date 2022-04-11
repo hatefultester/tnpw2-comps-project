@@ -12,17 +12,16 @@ const ACCESS_TOKEN_KEY = 'tnpw2projekt';
 
 const createNewUser = async(req, res) => {
 
-    // get user inputs
     const {
         username,
         password,
         repeatPassword
     } = req.body;
 
-    // validate user inputs
     if (!(username && password && repeatPassword)) {
         return res.status(400).send({ error: "All inputs are required" });
     }
+
     if (password != repeatPassword) {
         return res.status(400).send({ error: "Passwords not match" });
     }
@@ -32,21 +31,19 @@ const createNewUser = async(req, res) => {
     }
 
     const sameUsername = await User.findOne({ username });
+
     if (sameUsername) {
         return res.status(409).send("Username is already used, please choose different username");
     }
 
     try {
-        // bcrypt user password
         encryptedPassword = await bcrypt.hash(password, 10);
 
-        // create a new user
         const user = await User.create({
             username: username.toLowerCase(),
             password: encryptedPassword,
         });
 
-        // create a user token
         const token = createAccessToken(user);
 
         res.cookie("token", token, {
@@ -54,14 +51,19 @@ const createNewUser = async(req, res) => {
         });
 
         res.status(201).json(user);
+
     } catch (err) {
         console.log(err);
     }
+
 };
 
 const loginUser = async(req, res) => {
 
-    const { username, password } = req.body;
+    const {
+        username,
+        password
+    } = req.body;
 
     // validate user inputs
     if (!(username && password)) {
@@ -91,6 +93,15 @@ const loginUser = async(req, res) => {
     } catch (err) {
         console.log(err);
     }
+};
+
+// TODO
+const getSingleUser = async(req, res) => {
+
+};
+
+const updateUser = async(req, res) => {
+
 };
 
 const logoutUser = async(req, res) => {
@@ -129,6 +140,8 @@ module.exports = {
     createNewUser,
     loginUser,
     logoutUser,
+    getSingleUser,
+    updateUser,
     getAllUsers,
     deleteAllUsers,
 }

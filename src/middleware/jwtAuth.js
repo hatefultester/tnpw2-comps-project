@@ -35,4 +35,7 @@ const validToken = (req) => {
     }
 };
 
-module.exports = { auth, validToken };
+module.exports = {
+    auth,
+    validToken
+};
