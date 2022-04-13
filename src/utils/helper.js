@@ -19,8 +19,9 @@ const getStrings = (req, res) => {
     return strings;
 }
 
-const postman = (req, res) => {
+const postman = async(req, res) => {
     const browser = userAgent.getBrowser(req.headers['user-agent']);
+    console.log(browser)
     return browser.includes("ostman");
 }
 

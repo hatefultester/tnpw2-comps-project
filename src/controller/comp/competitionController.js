@@ -1,7 +1,7 @@
 const competition = require('../../model/comp/competitionModel');
 
 
-const createCompetition = async() => {
+const createCompetition = async(req, res) => {
     try {
 
         const {
@@ -88,7 +88,7 @@ const getListOfCompetitions = async() => {
 
 
 
-const deleteCompetition = async(req, res) => {
+const deleteCompetition = async(req, res, next) => {
     try {
         const { id } = req.params.id || req.body;
         const comp = await competition.findById(id);
@@ -101,7 +101,7 @@ const deleteCompetition = async(req, res) => {
     }
 };
 
-const deleteAll = async(req, res) => {
+const deleteAll = async(req, res, next) => {
     try {
         const comps = await competition.deleteMany({});
         res.status(200).json(comps);

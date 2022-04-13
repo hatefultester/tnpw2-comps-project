@@ -11,7 +11,7 @@ const {
     registrationPage,
     createCompetitionPage,
     errorPage
-} = require('./../controller/webController');
+} = require('./../controller/web/webController');
 
 
 router.get('/', dashboardPage);
