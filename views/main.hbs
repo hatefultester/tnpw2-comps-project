@@ -1,6 +1,11 @@
+
+{{#unless user}}
 <a href="/login">{{str.main_info_text}}</a>
+{{/unless}}
+
 
 <script src="/js/dashboard.js"></script>
+
 
 <div class="dashboard">
     {{#each comp}}

@@ -1,3 +1,4 @@
+// switch language cookie. Hardcoded, no support for adding additional language
 const changeLanguage = async(req, res) => {
     const { lang } = req.cookies;
 

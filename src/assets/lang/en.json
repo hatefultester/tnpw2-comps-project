@@ -1,6 +1,8 @@
 {
     "form_username": "Username : ",
     "form_password": "Password : ",
+    "form_old_password": "Old password : ",
+    "form_new_password": "New password : ",
     "form_repeat_password": "Repeat password : ",
     "form_login_button": "Log in",
     "form_required_token_warning": "You need to login to see this page!",
@@ -14,11 +16,17 @@
     "form_competition_description": "Detailed description (special rules, prizes, etc.) : ",
     "form_competition_info_text": "Please provide valid information",
     "form_competition_create_button": "Create and continue",
+    "form_submit_button": "Send",
     "page_title": "TNPW2 student project - Competition tracker",
     "main_info_text": "Direct yourself to login page",
     "header_headline": "Fyft comps",
+    "header_dashboard": "Competitions",
+    "header_user": "My profile",
+    "header_login": "Login",
     "footer_info_text": "Student project TNPW2 - Created by Matěj Grohmann",
     "page_not_found_text": "I am sorry, but this page was not found",
     "page_not_found_link": "Click here to go to the main page",
-    "switch_lang_img": "cz"
+    "switch_lang_img": "cz",
+    "user_detail_role": "Your role is : ",
+    "user_detail_logout": "Logout user"
 }

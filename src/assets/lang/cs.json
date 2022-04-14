@@ -1,6 +1,8 @@
 {
     "form_username": "Uživatelské jméno : ",
     "form_password": "Heslo : ",
+    "form_old_password": "Původní heslo : ",
+    "form_new_password": "Nové heslo : ",
     "form_repeat_password": "Heslo znovu : ",
     "form_login_button": "Přihlásit se",
     "form_required_token_warning": "Pro pokračování se musíš přihlásit!",
@@ -14,11 +16,17 @@
     "form_competition_description": "Detailní popis (pravidla, ceny, apod.) : ",
     "form_competition_info_text": "Prosím zadejte validní informace",
     "form_competition_create_button": "Založit a pokračovat",
+    "form_submit_button": "Odeslat",
     "page_title": "TNPW2 Studentský projekt - Sledování soutěží",
     "main_info_text": "Přejít na přihlašovací obrazovku",
     "header_headline": "Fyft soutěže",
+    "header_dashboard": "Seznam soutěží",
+    "header_user": "Můj profil",
+    "header_login": "Přihlásit se",
     "footer_info_text": "Studentský projekt TNPW2 - Vytvořil Matěj Grohmann",
     "page_not_found_text": "Je mi líto, ale tato stránka neexistuje",
     "page_not_found_link": "Klikni zde a přejdi na hlavní stránku",
-    "switch_lang_img": "us"
+    "switch_lang_img": "us",
+    "user_detail_role": "Your role is : ",
+    "user_detail_logout": "Logout user"
 }

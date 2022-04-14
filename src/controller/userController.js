@@ -105,9 +105,7 @@ const updateUser = async(req, res) => {
 
 const logoutUser = async(req, res) => {
     res.cookie('token').clearCookie;
-
     res.status(200).send("OK");
-    if (!postman) res.redirect('/');
 };
 
 const getAllUsers = async(req, res) => {

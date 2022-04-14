@@ -27,11 +27,14 @@ const auth = async(req, res, next) => {
     return next();
 };
 
-const validToken = (req) => {
+const getUser = (req) => {
     const { token } = req.cookies;
     try {
         const decoded = jwt.verify(token, ACCESS_TOKEN_KEY);
-        if (!decoded) { return false } else { return true }
+        const user = decoded['user'];
+        delete user['password'];
+        console.log(user);
+        if (!decoded) { return null } else { return user }
     } catch (err) {
         console.log(err);
     }
@@ -39,5 +42,5 @@ const validToken = (req) => {
 
 module.exports = {
     auth,
-    validToken
+    getUser
 };

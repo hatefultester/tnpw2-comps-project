@@ -10,6 +10,7 @@ const {
     requiredLoginPage,
     registrationPage,
     createCompetitionPage,
+    userDetailPage,
     errorPage
 } = require('./../controller/web/webController');
 
@@ -21,7 +22,7 @@ router.get('/login_expired', expiredLoginPage);
 router.get('/login_required', requiredLoginPage);
 router.get('/registration', registrationPage);
 router.get('/comp/create', auth, createCompetitionPage);
+router.get('/user', userDetailPage)
 router.get('*', errorPage);
-
 
 module.exports = router;

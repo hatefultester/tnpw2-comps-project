@@ -1,0 +1,19 @@
+<div class="user-profile">
+<form class="user-edit">
+{{str.form_username}} <input type="text" name="username" class="username-input" value="{{user.username}}" /> <br />
+<input type="submit" value="{{str.form_submit_button}}" />
+</form>
+
+{{str.user_detail_role}}{{user.role}}
+
+<form class="user-edit-password">
+{{str.form_old_password}} <input type="password" name="password" class="password-input" /><br />
+{{str.form_new_password}} <input type="password" name="password" class="password-input" /><br />
+{{str.form_repeat_password}} <input type="password" name="repeat-password" class="repeat-password-input" /><br />
+<input type="submit" value="{{str.form_submit_button}}" />
+</form>
+
+<a href="javascript:logout();" class="logout-user">{{str.user_detail_logout}}</a>
+</div>
+
+<script src="/js/userDetail.js"></script>

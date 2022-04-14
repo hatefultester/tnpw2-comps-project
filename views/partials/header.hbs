@@ -1,3 +1,20 @@
 <div class ="header">
     <h1>{{str.header_headline}}</h1>
+    
+    
+    <ul>
+        {{#unless dashboard}}
+        <li><a href="/">{{str.header_dashboard}}</a></li>
+        {{/unless}}
+
+        {{#if user}}
+        {{#unless userDetailPage}}
+        <li><a href="/user">{{str.header_user}}</a></li>
+        {{/unless}}
+        {{else}} {{#unless loginPoge}}
+        <li><a href="/login">{{str.header_login}}</a></li>
+        {{/unless}}
+        {{/if}}
+    </ul>
+
 </div>

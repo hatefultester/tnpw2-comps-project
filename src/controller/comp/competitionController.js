@@ -2,16 +2,17 @@ const competition = require('../../model/comp/competitionModel');
 
 
 const createCompetition = async(req, res) => {
+
+    const {
+        name,
+        date,
+        shortDescription,
+        description
+    } = req.body;
+
+    if (!(name && date && description)) return res.status(400).send("Name, Date and Description are required !");
+
     try {
-
-        const {
-            name,
-            date,
-            shortDescription,
-            description
-        } = req.body;
-
-        if (!(name && date && description)) return res.status(400).send("Name, Date and Description are required !");
 
         const newCompetition = await competition.create({
             name: name,
@@ -29,31 +30,7 @@ const createCompetition = async(req, res) => {
     }
 }
 
-const editCompetition = async(req, res) => {
-    try {
-        const updates = Object.keys(req.body);
-        const allowedUpdates = ['name', 'date', 'shortDescription', 'description', 'events', 'competitors'];
-        const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
-
-        try {
-            const task = await Task.findByIdAndUpdate(req.params.id, req.body, { useFindAndModify: false, new: true, runValidators: true })
-            if (!task) {
-                return res.status(404).send()
-            }
-            updates.forEach((update) => task[update] = req.body[update])
-            await task.save()
-            res.send(task)
-        } catch (e) {
-            res.status(400).send(e)
-
-        }
-
-
-
-    } catch (err) {
-        console.log(err);
-    }
-};
+/* GET */
 
 const getCompetition = async(req, res) => {
     try {
@@ -86,7 +63,7 @@ const getListOfCompetitions = async() => {
     }
 };
 
-
+/* Delete */
 
 const deleteCompetition = async(req, res, next) => {
     try {
@@ -110,7 +87,7 @@ const deleteAll = async(req, res, next) => {
     }
 }
 
-
+/* Helpers */
 
 function reduceCompInfo(comp) {
     return {
