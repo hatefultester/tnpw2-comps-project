@@ -1,9 +1,9 @@
 const helper = require('../../utils/helper');
 const {
     getListOfCompetitions,
-    getCompetitionDetails,
-    getCompetitionEvents
+    getCompetitionDetails
 } = require("../comp/competitionController");
+const { getAllCompetitorsByCompId } = require('./../comp/competitorController');
 const { getUser } = require("../../middleware/jwtAuth");
 
 /* DASHBOARD */
@@ -73,12 +73,15 @@ const registrationPage = async(req, res) => {
 
 const competitionDetailPage = async(req, res) => {
     const id = req.query.id;
+    const user = await getUser(req);
     const compDetails = await getCompetitionDetails(id);
-    const competitionEvents = await getCompetitionEvents(id);
+    const competitors = await getAllCompetitorsByCompId(id);
     res.render('layouts/comp/detail', {
         str: helper.getStrings(req, res),
+        user: user,
         comp: compDetails,
-        eventList: competitionEvents
+        compId: id,
+        competitor: competitors
     });
 }
 

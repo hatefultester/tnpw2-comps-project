@@ -1,5 +1,4 @@
 const competition = require('../../model/comp/competitionModel');
-const event = require('../../model/comp/eventModel');
 /**
  * 
  * @param {Name, date, shortDescription, description} req 
@@ -179,9 +178,7 @@ const getCompetitionDetails = async(id) => {
     return comp;
 };
 
-const addNewCompetitor = async(req, res) => {
 
-}
 
 module.exports = {
     createCompetition,
@@ -191,6 +188,5 @@ module.exports = {
     deleteCompetition,
     deleteAll,
     getCompetitionDetails,
-    getListOfCompetitions,
-    addNewCompetitor
+    getListOfCompetitions
 };

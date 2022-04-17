@@ -2,20 +2,45 @@
     Poznamka : Nedokazal jsem zprovoznit dostat si ty data z toho jsonu jinak nez pres each, je to prasarna
     -->
 
+{{#if user}}
 <nav>
         <ul>
-            {{#each eventList}}
-            <h3>{{this.name}}</h3>
-                    {{#each this.rounds}}
-                 <li><a href="">{{this.name}}</a></li>
-                    {{/each}} 
-            {{/each}}
+                <li><a href="/comp/edit?id={{compId}}">Editovat soutěž</a></li>
+                <li><a href="/comp/results?id={{compId}}">Editovat vysledky</a></li>
         </ul>
 </nav>
+{{/if}}
 
 <article>
     {{#each comp}}
         <h1>{{this.name}}</h1>
-        {{this._id}}
+        <div>
+            {{this.description}}
+        </div>
     {{/each}}
+        <table>
+            <tr>
+                <td>Jmeno</td>
+                <td>pokus 1</td>
+                <td>pokus 1</td>
+                <td>pokus 1</td>
+                <td>pokus 1</td>
+                <td>pokus 1</td>
+                <td>Prumer</td>
+                <td>Nejlepsi pokus</td>
+            </tr>
+            {{#each competitor}}
+         
+                <tr>
+                    <td>{{this.name}}</td>
+                        <td>{{#if this.first}}{{this.first}}{{else}}--{{/if}}</td>
+                        <td>{{#if this.second}}{{this.second}}{{else}}--{{/if}}</td>
+                        <td>{{#if this.third}}{{this.third}}{{else}}--{{/if}}</td>
+                        <td>{{#if this.fourth}}{{this.fourth}}{{else}}--{{/if}}</td>
+                        <td>{{#if this.fifth}}{{this.fifth}}{{else}}--{{/if}}</td>
+                        <td>{{#if this.average}}{{this.average}}{{else}}--{{/if}}</td>
+                        <td>{{#if this.best}}{{this.best}}{{else}}--{{/if}}</td>
+            </tr>
+            {{/each}}
+        </table>
 </article>
