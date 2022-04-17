@@ -110,6 +110,12 @@ const getAllCompetitorsByCompId = async(id) => {
     return competitorsWithResults;
 }
 
+/**
+ * Sorts resultes by average, if average is "", result is considered as worse 
+ * @param {*} a 
+ * @param {*} b 
+ * @returns 
+ */
 function compareResults(a, b) {
     if (a.average < b.average && a.average != "" && b.average != "") {
         return -1;

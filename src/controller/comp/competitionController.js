@@ -1,4 +1,5 @@
-const competition = require('../../model/comp/competitionModel');
+const competition = require('./../../model/comp/competitionModel');
+const competitor = require('./../../model/comp/competitorModel');
 /**
  * 
  * @param {Name, date, shortDescription, description} req 
@@ -131,7 +132,9 @@ const deleteCompetition = async(req, res) => {
         const { id } = req.params.id || req.body;
         const comp = await competition.findById(id);
         if (comp) {
-            competition.findByIdAndDelete(id);
+            await competition.findByIdAndDelete(id);
+            // delete competitors as well
+            await competitor.deleteMany({ "competitionId": id })
             res.status(200).send("Deleted");
         } else res.status(400).send("Not found");
     } catch (err) {
@@ -159,7 +162,7 @@ const deleteAll = async(req, res, next) => {
 /* Helpers */
 
 /**
- * Reduces competition info (only name, date, short desc)
+ * Reduces competition info (only name, date, short desc), implemented for possible complicated structure in the future
  * @param {*} comp 
  * @returns 
  */
@@ -173,6 +176,11 @@ function reduceCompInfo(comp) {
     };
 };
 
+/**
+ * 
+ * @param {Competition ID} id 
+ * @returns Competition JSON
+ */
 const getCompetitionDetails = async(id) => {
     const comp = await competition.findById(id);
     return comp;

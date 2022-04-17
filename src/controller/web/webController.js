@@ -6,8 +6,12 @@ const {
 const { getAllCompetitorsByCompId } = require('./../comp/competitorController');
 const { getUser } = require("../../middleware/jwtAuth");
 
-/* DASHBOARD */
 
+/**
+ * renders dashboard page
+ * @param {*} req 
+ * @param {*} res 
+ */
 const dashboardPage = async(req, res) => {
     const comps = await getListOfCompetitions();
     res.render('main', {
@@ -18,14 +22,24 @@ const dashboardPage = async(req, res) => {
     });
 };
 
+/**
+ * renders create new competition page
+ * @param {*} req 
+ * @param {*} res 
+ */
 const createCompetitionPage = async(req, res) => {
     res.render('layouts/comp/create', {
-        str: helper.getStrings(req, res)
+        str: helper.getStrings(req, res),
+        user: getUser(req)
     });
 };
 
 
-/* USER */
+/**
+ * Renders UserDetail Page
+ * @param {*} req 
+ * @param {*} res 
+ */
 
 const userDetailPage = async(req, res) => {
     const user = getUser(req);
@@ -38,8 +52,12 @@ const userDetailPage = async(req, res) => {
 };
 
 
-/* LOGIN */
 
+/**
+ * renders loginPage
+ * @param {*} req 
+ * @param {*} res 
+ */
 const loginPage = async(req, res) => {
     if (getUser(req)) res.redirect("/");
     res.render('layouts/auth/login', {
@@ -47,6 +65,11 @@ const loginPage = async(req, res) => {
     });
 };
 
+/**
+ * Bad implementation for sustainability, should use query instead
+ * @param {*} req 
+ * @param {*} res 
+ */
 const expiredLoginPage = async(req, res) => {
     if (getUser(req)) res.redirect("/");
     res.render('layouts/auth/login', {
@@ -55,6 +78,12 @@ const expiredLoginPage = async(req, res) => {
     });
 };
 
+
+/**
+ * Bad implementation for sustainability, should use query instead
+ * @param {*} req 
+ * @param {*} res 
+ */
 const requiredLoginPage = async(req, res) => {
     if (validToken(req)[0]) res.redirect("/");
     res.render('layouts/auth/login', {
@@ -63,14 +92,22 @@ const requiredLoginPage = async(req, res) => {
     });
 }
 
-/* REGISTRATION */
-
+/**
+ * renders registration page
+ * @param {*} req 
+ * @param {*} res 
+ */
 const registrationPage = async(req, res) => {
     res.render('layouts/auth/registration', {
         str: helper.getStrings(req, res)
     });
 }
 
+/**
+ * renders competition detail page
+ * @param {*} req 
+ * @param {*} res 
+ */
 const competitionDetailPage = async(req, res) => {
     const id = req.query.id;
     const user = await getUser(req);
@@ -85,6 +122,11 @@ const competitionDetailPage = async(req, res) => {
     });
 }
 
+/**
+ * renders competition edit page - not implemented in front end part
+ * @param {*} req 
+ * @param {*} res 
+ */
 const competitionEditPage = async(req, res) => {
     const id = req.query.id;
     const user = await getUser(req);
@@ -106,8 +148,6 @@ const errorPage = async(req, res) => {
         str: helper.getStrings(req, res)
     });
 };
-
-
 
 module.exports = {
     dashboardPage,
