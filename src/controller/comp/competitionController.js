@@ -1,5 +1,5 @@
 const competition = require('../../model/comp/competitionModel');
-
+const event = require('../../model/comp/eventModel');
 /**
  * 
  * @param {Name, date, shortDescription, description} req 
@@ -176,10 +176,23 @@ function reduceCompInfo(comp) {
 };
 
 const getCompetitionDetails = async(id) => {
-    console.log(id);
     const comp = await competition.findById(id);
     return comp;
 };
+
+const getCompetitionEvents = async(id) => {
+    const comp = await competition.findById(id);
+    let compEvents = [];
+
+    for (let index = 0; index < comp.events.length; index++) {
+        const eventId = comp.events[index]
+        const eventDetail = await event.findById(eventId);
+        compEvents = [...compEvents, eventDetail];
+    }
+
+    console.log(compEvents);
+    return compEvents;
+}
 
 
 module.exports = {
@@ -190,5 +203,6 @@ module.exports = {
     deleteCompetition,
     deleteAll,
     getCompetitionDetails,
-    getListOfCompetitions
+    getListOfCompetitions,
+    getCompetitionEvents
 };

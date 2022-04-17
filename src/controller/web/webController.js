@@ -1,7 +1,8 @@
 const helper = require('../../utils/helper');
 const {
     getListOfCompetitions,
-    getCompetitionDetails
+    getCompetitionDetails,
+    getCompetitionEvents
 } = require("../comp/competitionController");
 const { getUser } = require("../../middleware/jwtAuth");
 
@@ -73,10 +74,11 @@ const registrationPage = async(req, res) => {
 const competitionDetailPage = async(req, res) => {
     const id = req.query.id;
     const compDetails = await getCompetitionDetails(id);
-    console.log(compDetails);
+    const competitionEvents = await getCompetitionEvents(id);
     res.render('layouts/comp/detail', {
         str: helper.getStrings(req, res),
-        comp: compDetails
+        comp: compDetails,
+        eventList: competitionEvents
     });
 }
 

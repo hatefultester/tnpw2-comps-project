@@ -7,6 +7,8 @@ const compRoutes = require("./routes/comp/competitionRoutes");
 const userRoutes = require("./routes/userRoutes");
 const webRoutes = require("./routes/webRoutes");
 const langRoutes = require("./routes/langRoutes");
+const eventRoutes = require("./routes/comp/eventRoutes");
+const competitorRoutes = require("./routes/comp/competitorRoutes");
 const userAgent = require('express-useragent');
 const cookieParser = require("cookie-parser");
 
@@ -26,6 +28,8 @@ app.engine('hbs', handlebars.engine({
 }));
 
 app.use('/api/comp/', compRoutes);
+app.use('/api/event/', eventRoutes);
+app.use('api/competitor/', competitorRoutes);
 app.use('/api/user/', userRoutes);
 app.use('/api/lang/', langRoutes);
 

@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 
 
 const roundSchema = new mongoose.Schema({
-    "startDate": { type: Date, required: true },
-    "endDate": { type: Date, required: true },
+    "name": { type: String, required: true },
     "onward": { type: Number },
     "results": {
         type: [{
@@ -14,4 +13,4 @@ const roundSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('competitor', roundSchema);
+module.exports = mongoose.model('round', roundSchema);

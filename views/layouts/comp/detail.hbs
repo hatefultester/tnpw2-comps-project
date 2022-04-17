@@ -1,1 +1,21 @@
-{{comp}}
+<!-- 
+    Poznamka : Nedokazal jsem zprovoznit dostat si ty data z toho jsonu jinak nez pres each, je to prasarna
+    -->
+
+<nav>
+        <ul>
+            {{#each eventList}}
+            <h3>{{this.name}}</h3>
+                    {{#each this.rounds}}
+                 <li><a href="">{{this.name}}</a></li>
+                    {{/each}} 
+            {{/each}}
+        </ul>
+</nav>
+
+<article>
+    {{#each comp}}
+        <h1>{{this.name}}</h1>
+        {{this._id}}
+    {{/each}}
+</article>
