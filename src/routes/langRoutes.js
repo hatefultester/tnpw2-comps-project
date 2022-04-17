@@ -1,7 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const languageController = require("./../controller/web/languageController");
 
-router.get('/change', languageController.changeLanguage);
+const {
+    changeLanguage
+} = require("./../controller/web/languageController");
+
+// changes language
+router.get('/change', changeLanguage);
 
 module.exports = router;

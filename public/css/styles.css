@@ -1,93 +1,60 @@
-/*
-.footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: lightblue;
-    color: black;
-    text-align: center;
-    padding: 10px;
+.page {
+    display: flex;
+    flex-flow: column;
 }
 
-.footer ul {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-.footer li {
-    float: right;
-    padding: 5px;
-    margin-right: 5px;
-}
-
-@media only screen and (max-width: 600px) {
-    .footer {
-        background-color: transparent;
-    }
-    .footer ul {
-        padding: 5px;
-        background-color: lightblue;
-    }
-    .footer li {
-        align-content: center;
-    }
-}
-*/
-
-* {
-    box-sizing: border-box;
-}
-
-.menu {
-    overflow: auto;
-    float: left;
-    width: 20%;
-    text-align: center;
-}
-
-.menu a {
-    background-color: #e5e5e5;
-    padding: 8px;
-    margin-top: 7px;
-    display: block;
-    width: 100%;
-    color: black;
-}
-
-.main {
-    float: left;
-    width: 60%;
-    padding: 0 20px;
-}
-
-.header {
-    background-color: #e5e5e5;
+.page-header {
+    background-color: rgb(90, 86, 210);
     padding: 15px;
-    overflow: auto;
+    border-radius: 15px;
     text-align: center;
 }
 
-.footer {
-    position: fixed;
+ul {
+    background-color: rgb(90, 86, 210);
+    border-radius: 15px;
+    list-style-type: none;
+    overflow: hidden;
+    position: -webkit-sticky;
+    /* Safari */
+    position: sticky;
+    top: 0;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+.page-content {
+    padding: 15px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    text-align: center;
+    width: 80%;
+}
+
+.page-footer {
+    background-color: rgb(90, 86, 210);
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    position: -webkit-sticky;
+    position: sticky;
     left: 0;
     bottom: 0;
-    width: 100%;
-    background-color: #e5e5e5;
-    text-align: center;
-    padding: 10px;
-    margin-top: 7px;
-}
-
-.change-language {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    margin: 10px;
 }

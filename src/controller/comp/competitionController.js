@@ -56,7 +56,7 @@ const getListOfCompetitions = async() => {
     try {
         const comps = await competition.find({});
         const reduced = comps.map(reduceCompInfo);
-        console.log(reduced);
+
         return reduced;
     } catch (err) {
         console.log(err);

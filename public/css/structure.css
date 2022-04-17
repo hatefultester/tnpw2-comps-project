@@ -1,0 +1,68 @@
+.page {
+    display: flex;
+    flex-flow: column;
+}
+
+.page-header {
+    background-color: rgb(90, 86, 210);
+    padding: 10px;
+    border-radius: 15px;
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+}
+
+.page-footer {
+    background-color: rgb(90, 86, 210);
+    padding: 10px;
+    border-radius: 15px;
+    text-align: center;
+    width: 80%;
+    margin-left: 10%;
+    position: -webkit-sticky;
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    color: white;
+}
+
+.page-content {
+    padding: 10px;
+    width: 80%;
+    margin: 10px;
+    margin-left: 10%;
+    /* display: flex; */
+}
+
+.header-title {
+    flex: 2;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    color: white;
+}
+
+.header-menu {
+    list-style-type: none;
+    height: 100%;
+    display: flex;
+    margin: auto;
+}
+
+.header-menu li {
+    align-items: stretch;
+    margin: auto;
+    height: 100%;
+    padding: 10px;
+}
+
+.header-menu li a {
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
+.header-menu li a:hover {
+    background-color: aqua;
+}

@@ -11,10 +11,12 @@ const userAgent = require('express-useragent');
 const cookieParser = require("cookie-parser");
 
 const app = express();
+const port = 5000;
 
 app.use(express.json());
 app.use(cookieParser());
 app.use(userAgent.express());
+
 app.set('view engine', 'hbs');
 app.engine('hbs', handlebars.engine({
     layoutsDir: `${__dirname}/../views/layouts`,
@@ -22,7 +24,6 @@ app.engine('hbs', handlebars.engine({
     defaultLayout: 'index',
     partialsDir: `${__dirname}/../views/partials`
 }));
-
 
 app.use('/api/comp/', compRoutes);
 app.use('/api/user/', userRoutes);
@@ -33,7 +34,6 @@ app.use('/', webRoutes);
 
 
 
-const port = 5000;
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });

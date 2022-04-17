@@ -4,14 +4,17 @@
 {{/unless}}
 
 
-<script src="/js/dashboard.js"></script>
-
 
 <div class="dashboard">
     {{#each comp}}
+    <div class="comp">
     {{this.name}} <br />
     {{this.date}} <br />
     {{this.shortDescription}} <br />
-    {{this.id}}
     {{/each}}
+    </div>
 </div>
+
+<link rel="stylesheet" href="/css/dashboard.css">
+
+<script src="/js/dashboard.js"></script>

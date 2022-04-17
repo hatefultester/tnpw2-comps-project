@@ -2,6 +2,13 @@ const jwt = require("jsonwebtoken");
 const { postman } = require("./../utils/helper");
 const ACCESS_TOKEN_KEY = 'tnpw2projekt';
 
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ * @returns returns next if user is authorized
+ */
 const auth = async(req, res, next) => {
 
     const { token } = req.cookies;
@@ -27,16 +34,20 @@ const auth = async(req, res, next) => {
     return next();
 };
 
+/**
+ * 
+ * @param {*} req 
+ * @returns user based on a req token
+ */
 const getUser = (req) => {
     const { token } = req.cookies;
     try {
         const decoded = jwt.verify(token, ACCESS_TOKEN_KEY);
         const user = decoded['user'];
         delete user['password'];
-        console.log(user);
         if (!decoded) { return null } else { return user }
-    } catch (err) {
-        console.log(err);
+    } catch {
+        return null;
     }
 };
 

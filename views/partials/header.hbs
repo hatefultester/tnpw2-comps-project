@@ -1,20 +1,25 @@
-<div class ="header">
-    <h1>{{str.header_headline}}</h1>
-    
-    
-    <ul>
-        {{#unless dashboard}}
-        <li><a href="/">{{str.header_dashboard}}</a></li>
-        {{/unless}}
+<div class="page-header">
+<h1 class="header-title">{{str.header_headline}}</h1>
+<ul class="header-menu">
+    <li><a href="javascript:switchLang();"><img src="/assets/images/{{str.switch_lang_img}}.svg" width="30" height="23" class="change-language" /></a></li>
 
-        {{#if user}}
+    {{#unless dashboard}}
+        <li><a href="/" class="header-menu-item">{{str.header_dashboard}}</a></li>
+    {{/unless}}
+
+    {{#if user}}
         {{#unless userDetailPage}}
-        <li><a href="/user">{{str.header_user}}</a></li>
+            <li><a href="/user" class="header-menu-item">{{str.header_user}}</a></li>
         {{/unless}}
-        {{else}} {{#unless loginPoge}}
-        <li><a href="/login">{{str.header_login}}</a></li>
+    {{else}} 
+        {{#unless loginPoge}}
+            <li><a href="/login" class="header-menu-item">{{str.header_login}}</a></li>
         {{/unless}}
-        {{/if}}
-    </ul>
+    {{/if}}
+
+</ul>
 
 </div>
+
+
+<script src="/js/lang.js"></script>
