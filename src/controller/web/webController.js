@@ -1,12 +1,14 @@
 const helper = require('../../utils/helper');
-const competitionController = require("../comp/competitionController");
+const {
+    getListOfCompetitions,
+    getCompetitionDetails
+} = require("../comp/competitionController");
 const { getUser } = require("../../middleware/jwtAuth");
-const { RESET_CONTENT } = require('http-status-codes');
 
 /* DASHBOARD */
 
 const dashboardPage = async(req, res) => {
-    const comps = await competitionController.getListOfCompetitions();
+    const comps = await getListOfCompetitions();
     res.render('main', {
         str: helper.getStrings(req, res),
         comp: comps,
@@ -68,6 +70,16 @@ const registrationPage = async(req, res) => {
     });
 }
 
+const competitionDetailPage = async(req, res) => {
+    const id = req.query.id;
+    const compDetails = await getCompetitionDetails(id);
+    console.log(compDetails);
+    res.render('layouts/comp/detail', {
+        str: helper.getStrings(req, res),
+        comp: compDetails
+    });
+}
+
 /* ERROR PAGE */
 
 const errorPage = async(req, res) => {
@@ -85,6 +97,7 @@ module.exports = {
     expiredLoginPage,
     requiredLoginPage,
     registrationPage,
+    competitionDetailPage,
     createCompetitionPage,
     errorPage
 };

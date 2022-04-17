@@ -24,6 +24,7 @@ registrationFormDOM.addEventListener('submit', async(e) => {
             passwordInput.value = '';
             repeatPasswordInput.value = '';
             resMessage.textContent = 'Succesful';
+            location.replace('/');
         }
     } catch (error) {
         console.log(error);

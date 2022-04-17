@@ -1,9 +1,12 @@
-<form class="registration">
-{{str.form_username}} <input type="text" name="username" class="username-input" /> <br />
-{{str.form_password}} <input type="password" name="password" class="password-input" /><br />
-{{str.form_repeat_password}} <input type="password" name="repeat-password" class="repeat-password-input" /><br />
-<input type="submit" value="{{str.form_registration_button}}" />
-<p>{{str.form_registration_requirements_text}}</p>
-<p id="resMessage"></p>
-</form>
+<article>
+    <form class="registration">
+        {{str.form_username}} <input type="text" name="username" class="username-input" /> <br />
+        {{str.form_password}} <input type="password" name="password" class="password-input" /><br />
+        {{str.form_repeat_password}} <input type="password" name="repeat-password" class="repeat-password-input" /><br />
+        <input type="submit" value="{{str.form_registration_button}}" />
+        <p>{{str.form_registration_requirements_text}}</p>
+        <p id="resMessage"></p>
+    </form>
+</article>
+
 <script src="/js/registration.js"></script>

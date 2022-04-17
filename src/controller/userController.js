@@ -132,6 +132,13 @@ const updateUser = async(req, res) => {
     if (!username) {
         res.status(400).send('provide new username');
     }
+
+
+    const alreadyUser = await User.findOne({ username });
+    if (alreadyUser) {
+        res.status(400).send("This username is already used in database, please choose another one");
+    }
+
     try {
         const user = await User.findOne({ _id: getUser(req)._id });
 

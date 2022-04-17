@@ -6,7 +6,7 @@ const CompetitionSchema = new mongoose.Schema({
     events: {
         type: [{
             "name": { type: String, required: true },
-            "rounds": []
+            "rounds": { type: [mongoose.Schema.Types.ObjectId], ref: 'roundSchema' }
         }]
     },
     competitors: { type: mongoose.Schema.Types.ObjectId, ref: 'CompetitorSchema' },

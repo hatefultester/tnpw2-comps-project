@@ -28,5 +28,6 @@
     "page_not_found_link": "Click here to go to the main page",
     "switch_lang_img": "cz",
     "user_detail_role": "Your role is : ",
-    "user_detail_logout": "Logout user"
+    "user_detail_logout": "Logout user",
+    "dashboard_new_comp": "Create new competition"
 }

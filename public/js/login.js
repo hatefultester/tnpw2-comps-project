@@ -25,6 +25,8 @@ loginFormDOM.addEventListener('submit', async(e) => {
             usernameInput.value = '';
             passwordInput.value = '';
             if (url[1]) location.replace(url[1]);
+            else
+                location.replace('/');
         }
     } catch (error) {
         console.log(error);

@@ -4,19 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{str.page_title}}</title>
+
+          
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <div class="page">
-        {{>header}}
-        <div class="page-content">
-            {{{body}}}
-        </div>
-              
-    </div>
-  <div class="page-footer">
-            {{>footer}}
-            
-</div>
-    <link rel="stylesheet" href="/css/structure.css">
+ <header>{{>header}}</header>
+  <div id="main">
+      {{{body}}}
+  </div>
+  <footer>{{>footer}}</footer>
 </body>
 </html>

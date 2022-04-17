@@ -1,60 +1,102 @@
-.page {
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+#main {
     display: flex;
-    flex-flow: column;
+    min-height: calc(100vh - 40vh);
 }
 
-.page-header {
-    background-color: rgb(90, 86, 210);
+#main>article {
+    flex: 1;
+}
+
+#main>nav,
+#main>aside {
+    flex: 0 0 20vw;
+    background: beige;
+}
+
+#main>nav {
+    order: -1;
+}
+
+header,
+article,
+nav,
+footer,
+aside {
     padding: 15px;
-    border-radius: 15px;
     text-align: center;
 }
 
-ul {
-    background-color: rgb(90, 86, 210);
-    border-radius: 15px;
-    list-style-type: none;
-    overflow: hidden;
-    position: -webkit-sticky;
-    /* Safari */
-    position: sticky;
-    top: 0;
-}
-
-li {
-    float: left;
-}
-
-li a {
-    display: block;
+header,
+footer {
+    background: rgb(85, 85, 250);
+    height: 10vh;
     color: white;
-    text-align: center;
-    padding: 20px;
+}
+
+header {
+    position: -webkit-sticky;
+    position: sticky;
+    left: 0;
+    top: 0;
+    display: flex;
+}
+
+header .header-title {
+    flex: 1;
+    margin: auto;
+    text-align: left;
+}
+
+header .header-menu {
+    margin: auto;
+    float: left;
+    list-style-type: none;
+}
+
+header .header-menu li {
+    display: inline;
+    margin: auto;
+}
+
+header .header-menu li a {
+    padding-right: 20px;
+    color: white;
+}
+
+a {
     text-decoration: none;
 }
 
-li a:hover {
-    background-color: #111;
+a:hover {
+    text-decoration: underline;
 }
 
-.page-content {
-    padding: 15px;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border-radius: 15px;
-    text-align: center;
-    width: 80%;
-}
-
-.page-footer {
-    background-color: rgb(90, 86, 210);
-    padding: 15px;
-    border-radius: 15px;
-    text-align: center;
+footer {
     position: -webkit-sticky;
     position: sticky;
     left: 0;
     bottom: 0;
+}
+
+footer h2 {
+    padding: auto;
+    margin: auto;
+}
+
+.dashboard {
+    display: flex;
+}
+
+.dashboard .comp {
+    border-color: black;
+    border-radius: 15px;
+    padding: 15px;
 }

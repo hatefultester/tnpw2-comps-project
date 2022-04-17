@@ -1,20 +1,18 @@
-
-{{#unless user}}
-<a href="/login">{{str.main_info_text}}</a>
-{{/unless}}
-
-
+<article>
+{{#if user}}
+<a href="/comp/create">{{str.dashboard_new_comp}}</a>
+{{/if}}
 
 <div class="dashboard">
     {{#each comp}}
     <div class="comp">
-    {{this.name}} <br />
+    <h3><a href="/comp/detail?id={{this.id}}">{{this.name}}</a></h3>
     {{this.date}} <br />
     {{this.shortDescription}} <br />
     {{/each}}
     </div>
 </div>
 
-<link rel="stylesheet" href="/css/dashboard.css">
+</article>
 
 <script src="/js/dashboard.js"></script>

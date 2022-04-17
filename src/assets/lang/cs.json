@@ -27,6 +27,7 @@
     "page_not_found_text": "Je mi líto, ale tato stránka neexistuje",
     "page_not_found_link": "Klikni zde a přejdi na hlavní stránku",
     "switch_lang_img": "us",
-    "user_detail_role": "Your role is : ",
-    "user_detail_logout": "Logout user"
+    "user_detail_role": "Tvoje role je : ",
+    "user_detail_logout": "Odhlásit uživatele",
+    "dashboard_new_comp": "Vytvořit novou soutěž"
 }
