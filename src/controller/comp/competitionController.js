@@ -22,7 +22,6 @@ const createCompetition = async(req, res) => {
         const newCompetition = await competition.create({
             name: name,
             date: date,
-            events: null,
             competitors: null,
             shortDescription: shortDescription,
             description: description,
@@ -180,20 +179,9 @@ const getCompetitionDetails = async(id) => {
     return comp;
 };
 
-const getCompetitionEvents = async(id) => {
-    const comp = await competition.findById(id);
-    let compEvents = [];
+const addNewCompetitor = async(req, res) => {
 
-    for (let index = 0; index < comp.events.length; index++) {
-        const eventId = comp.events[index]
-        const eventDetail = await event.findById(eventId);
-        compEvents = [...compEvents, eventDetail];
-    }
-
-    console.log(compEvents);
-    return compEvents;
 }
-
 
 module.exports = {
     createCompetition,
@@ -204,5 +192,5 @@ module.exports = {
     deleteAll,
     getCompetitionDetails,
     getListOfCompetitions,
-    getCompetitionEvents
+    addNewCompetitor
 };

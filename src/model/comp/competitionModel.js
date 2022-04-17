@@ -3,11 +3,12 @@ const mongoose = require('mongoose');
 const CompetitionSchema = new mongoose.Schema({
     name: { type: String, required: true },
     date: { type: String, required: true },
-    events: {
-        type: [mongoose.Schema.Types.ObjectId],
-        ref: 'CompetitorSchema'
+    competitors: {
+        type: [{
+            "name": { type: String, required: true },
+            "results": { type: [Number] }
+        }]
     },
-    competitors: { type: [mongoose.Schema.Types.ObjectId], ref: 'CompetitorSchema' },
     shortDescription: { type: String, required: true },
     description: { type: String }
 });
