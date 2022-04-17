@@ -1,6 +1,11 @@
 const competition = require('./../../model/comp/competitionModel');
 const competitor = require('./../../model/comp/competitorModel');
 
+/**
+ * Creates new competitor (without results)
+ * @param {*} req 
+ * @param {*} res 
+ */
 const addNewCompetitor = async(req, res) => {
     const id = req.query.id;
 
@@ -30,29 +35,51 @@ const addNewCompetitor = async(req, res) => {
     }
 }
 
+/**
+ * get All competitors
+ * @param {*} req 
+ * @param {*} res 
+ */
 const getAllCompetitors = async(req, res) => {
     const competitors = await competitor.find({});
     res.status(200).json(competitors);
 };
 
+/**
+ * deleteAll Competitors
+ * @param {*} req 
+ * @param {*} res 
+ */
 const deleteAllCompetitors = async(req, res) => {
     const competitors = await competitor.deleteMany({})
     res.status(200).json(competitors);
 }
 
+/**
+ * Deletes all competitors based on their comp ID
+ * @param {*} req 
+ * @param {*} res 
+ * @returns 
+ */
 const deleteByCompetitionId = async(req, res) => {
     const id = req.query.id;
     if (!id) return res.status(400).send("No id provided");
+
     const competitors = await competitor.deleteMany({ "competitionId": id })
+
     res.status(200).json(competitors);
 }
 
+/**
+ * Na tohle fakt nejsem pysnej, ale nejak by to melo fungovat :D 
+ * @param {*} id 
+ * @returns 
+ */
 const getAllCompetitorsByCompId = async(id) => {
     const competitors = await competitor.find({ "competitionId": id }).lean();
     const competitorsWithResults = [];
     for (let i = 0; i < competitors.length; i++) {
 
-        // tohle je fakt hnusny uznavam
         const results = [competitors[i].first, competitors[i].second, competitors[i].third, competitors[i].fourth, competitors[i].fifth];
         const min = Math.min(...results);
 
@@ -100,10 +127,16 @@ function compareResults(a, b) {
 const deleteCompetitor = async(req, res) => {
     const id = req.query.id;
     if (!id) res.status(400).send("ID required");
-    const Competitor = competitor.findByIdAndDelete({ id });
+
+    const Competitor = await competitor.findByIdAndDelete(id);
     res.status(200).send("User deleted");
 }
 
+/**
+ * Updates results of competitor
+ * @param {*} req 
+ * @param {*} res 
+ */
 const updateResults = async(req, res) => {
     const {
         id,
@@ -136,6 +169,25 @@ const updateResults = async(req, res) => {
 
 }
 
+const getCompetitorById = async(req, res) => {
+    const id = req.query.id;
+
+    if (!id) res.status(400).send("No Id provided");
+
+    const Competitor = await competitor.findById(id).lean();
+
+    if (!Competitor) res.status(400).send("Competitor not found");
+
+
+    res.status(200).json({
+        first: Competitor.first,
+        second: Competitor.second,
+        third: Competitor.third,
+        fourth: Competitor.fourth,
+        fifth: Competitor.fifth
+    });
+}
+
 module.exports = {
     deleteAllCompetitors,
     getAllCompetitors,
@@ -143,5 +195,6 @@ module.exports = {
     deleteByCompetitionId,
     updateResults,
     getAllCompetitorsByCompId,
-    deleteCompetitor
+    deleteCompetitor,
+    getCompetitorById
 }

@@ -19,7 +19,7 @@
     "form_submit_button": "Odeslat",
     "page_title": "TNPW2 Studentský projekt - Sledování soutěží",
     "main_info_text": "Přejít na přihlašovací obrazovku",
-    "header_headline": "Fyft soutěže",
+    "header_headline": "Soutěže",
     "header_dashboard": "Seznam soutěží",
     "header_user": "Můj profil",
     "header_login": "Přihlásit se",
@@ -29,5 +29,13 @@
     "switch_lang_img": "us",
     "user_detail_role": "Tvoje role je : ",
     "user_detail_logout": "Odhlásit uživatele",
-    "dashboard_new_comp": "Vytvořit novou soutěž"
+    "dashboard_new_comp": "Vytvořit novou soutěž",
+    "sorry_message": "Tahle stránka se nestihla :(, requesty na to jsou",
+    "detail_edit": "Upravit",
+    "detail_delete": "Odstranit",
+    "detail_name": "Jméno",
+    "detail_average": "Průměr z pěti",
+    "detail_best_single": "Nejlepší pokus",
+    "detail_new_competitor": "Přidat soutěžícího",
+    "detail_edit_competitor": "Upravit výsledky"
 }

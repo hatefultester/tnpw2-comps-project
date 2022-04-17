@@ -9,12 +9,15 @@ const {
     deleteByCompetitionId,
     updateResults,
     deleteCompetitor,
+    getCompetitorById
 } = require('./../../controller/comp/competitorController');
 
 
 router.post('/add', auth, addNewCompetitor);
 
 router.get('/getAll', getAllCompetitors);
+
+router.get('/get', getCompetitorById)
 
 router.delete('/deleteAll', auth, deleteAllCompetitors);
 

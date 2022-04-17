@@ -8,7 +8,7 @@ body {
 
 #main {
     display: flex;
-    min-height: calc(100vh - 40vh);
+    min-height: 100vh;
 }
 
 #main>article {
@@ -18,7 +18,7 @@ body {
 #main>nav,
 #main>aside {
     flex: 0 0 20vw;
-    background: beige;
+    background: rgb(166, 194, 243);
 }
 
 #main>nav {
@@ -93,10 +93,42 @@ footer h2 {
 
 .dashboard {
     display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .dashboard .comp {
-    border-color: black;
+    border: 1px solid black;
     border-radius: 15px;
+    min-width: 70%;
     padding: 15px;
+    margin: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+}
+
+table thead tr {
+    background-color: #000398;
+    color: white;
+    text-align: center;
+}
+
+td {
+    padding: 12px 15px;
+}
+
+tbody tr:last-of-type {
+    border-bottom: 2px solid #01000b;
+}
+
+#form {
+    border: 1px solid black;
+    border-radius: 15px;
+    text-align: center;
+    padding: 15px;
+    margin: 15px;
 }

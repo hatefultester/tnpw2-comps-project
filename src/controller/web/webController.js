@@ -85,6 +85,20 @@ const competitionDetailPage = async(req, res) => {
     });
 }
 
+const competitionEditPage = async(req, res) => {
+    const id = req.query.id;
+    const user = await getUser(req);
+    const compDetails = await getCompetitionDetails(id);
+    const competitors = await getAllCompetitorsByCompId(id);
+    res.render('layouts/comp/edit', {
+        str: helper.getStrings(req, res),
+        user: user,
+        comp: compDetails,
+        compId: id,
+        competitor: competitors
+    });
+};
+
 /* ERROR PAGE */
 
 const errorPage = async(req, res) => {
@@ -103,6 +117,7 @@ module.exports = {
     requiredLoginPage,
     registrationPage,
     competitionDetailPage,
+    competitionEditPage,
     createCompetitionPage,
     errorPage
 };

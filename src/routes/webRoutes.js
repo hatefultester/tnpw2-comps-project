@@ -11,6 +11,7 @@ const {
     createCompetitionPage,
     competitionDetailPage,
     userDetailPage,
+    competitionEditPage,
     errorPage
 } = require('./../controller/web/webController');
 
@@ -32,6 +33,9 @@ router.get('/user', userDetailPage)
 router.get('/comp/create', auth, createCompetitionPage);
 
 router.get('/comp/detail', competitionDetailPage);
+
+router.get('/comp/edit', auth, competitionEditPage);
+
 
 // error page
 router.get('*', errorPage);

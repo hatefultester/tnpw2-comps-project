@@ -1,38 +1,75 @@
-<!-- 
-    Poznamka : Nedokazal jsem zprovoznit dostat si ty data z toho jsonu jinak nez pres each, je to prasarna
-    -->
+
 
 {{#if user}}
 <nav>
+
+        <form class="edit-results">
+
+            <h3>{{str.detail_edit_competitor}}</h3>
+           ID: <input type="text"  class="id-input" /><br>
+           1: <input type="text"  class="first-input" /><br>
+           2: <input type="text"  class="second-input" /><br>
+           3: <input type="text"  class="third-input" /><br>
+           4: <input type="text"  class="fourth-input" /><br>
+           5: <input type="text"  class="fifth-input" /><br>
+            <br><input type="submit" value="{{str.form_submit_button}}">
+        </form>
+        <br>
+        <form class="add-competitor">
+            <h3>{{str.detail_new_competitor}}</h3>
+           {{str.detail_name}} <input type="text"  class="name-input" /><br>
+             <br><input type="submit" value="{{str.form_submit_button}}">
+        </form>
+
         <ul>
                 <li><a href="/comp/edit?id={{compId}}">Editovat soutěž</a></li>
-                <li><a href="/comp/results?id={{compId}}">Editovat vysledky</a></li>
         </ul>
+
 </nav>
 {{/if}}
 
 <article>
     {{#each comp}}
+
+<p style="position:absolute; left=0; top:0;color: transparent" class="comp-id">{{this._id}}</p>
         <h1>{{this.name}}</h1>
         <div>
             {{this.description}}
         </div>
     {{/each}}
-        <table>
+
+    <!-- 
+     IF statement mi v Handlebars nefungoval uvnitr EACH, vyresil jsem to tedy ponekud hnusne, ale aspon to dela to co jsem chtel :)
+    -->
+    <br>
+        <table><thead>
             <tr>
-                <td>Jmeno</td>
-                <td>pokus 1</td>
-                <td>pokus 1</td>
-                <td>pokus 1</td>
-                <td>pokus 1</td>
-                <td>pokus 1</td>
-                <td>Prumer</td>
-                <td>Nejlepsi pokus</td>
+                {{#if user}}
+                <td>-</td>
+                <td>-</td>
+                {{/if}}
+                <td>{{str.detail_name}}</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>{{str.detail_average}}</td>
+                <td>{{str.detail_best_single}}</td>
+                
             </tr>
+            </thead>
+            <tbody></tbody>
+            {{#if user}} 
             {{#each competitor}}
          
                 <tr>
-                    <td>{{this.name}}</td>
+                       
+                       <td><a href="javascript: fill('{{this.id}}')">Edit</a></td>   
+                                            
+                       <td><a href="javascript: del('{{this.id}}')">Delete</a></td>  
+
+                        <td>{{this.name}}</td>
                         <td>{{#if this.first}}{{this.first}}{{else}}--{{/if}}</td>
                         <td>{{#if this.second}}{{this.second}}{{else}}--{{/if}}</td>
                         <td>{{#if this.third}}{{this.third}}{{else}}--{{/if}}</td>
@@ -42,5 +79,27 @@
                         <td>{{#if this.best}}{{this.best}}{{else}}--{{/if}}</td>
             </tr>
             {{/each}}
+            {{else}}
+
+            {{#each competitor}}
+            <tr>                          
+                        <td>{{this.name}}</td>
+                        <td>{{#if this.first}}{{this.first}}{{else}}--{{/if}}</td>
+                        <td>{{#if this.second}}{{this.second}}{{else}}--{{/if}}</td>
+                        <td>{{#if this.third}}{{this.third}}{{else}}--{{/if}}</td>
+                        <td>{{#if this.fourth}}{{this.fourth}}{{else}}--{{/if}}</td>
+                        <td>{{#if this.fifth}}{{this.fifth}}{{else}}--{{/if}}</td>
+                        <td>{{#if this.average}}{{this.average}}{{else}}--{{/if}}</td>
+                        <td>{{#if this.best}}{{this.best}}{{else}}--{{/if}}</td>
+            </tr>
+            {{/each}}
+            {{/if}}
+            </tbody>
         </table>
+
+
 </article>
+
+
+
+<script src="/js/compDetail.js"></script>

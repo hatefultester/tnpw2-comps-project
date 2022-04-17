@@ -19,7 +19,7 @@
     "form_submit_button": "Send",
     "page_title": "TNPW2 student project - Competition tracker",
     "main_info_text": "Direct yourself to login page",
-    "header_headline": "Fyft comps",
+    "header_headline": "Comps",
     "header_dashboard": "Competitions",
     "header_user": "My profile",
     "header_login": "Login",
@@ -29,5 +29,14 @@
     "switch_lang_img": "cz",
     "user_detail_role": "Your role is : ",
     "user_detail_logout": "Logout user",
-    "dashboard_new_comp": "Create new competition"
+    "dashboard_new_comp": "Create new competition",
+    "sorry_message": "This page is NESTIHNUTA :( ",
+    "detail_edit": "Edit",
+    "detail_del": "Delete",
+    "detail_name": "Name",
+    "detail_average": "Average of 5",
+    "detail_best_single": "Best single",
+
+    "detail_new_competitor": "Add competitor",
+    "detail_edit_competitor": "Edit results"
 }
